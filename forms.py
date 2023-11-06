@@ -59,7 +59,7 @@ class CreateCommentForm(FlaskForm):
     submit = SubmitField("Add a comment")
 
 class LoginForm(FlaskForm):
-    email = StringField('E-mail', validators=[DataRequired(), Email()])
+    email = StringField('E-mail', validators=[DataRequired()])
     password = PasswordField('Hasło', validators=[DataRequired(), Length(8), ])
 
     submit = SubmitField(label="ZALOGUJ MNIE!")
