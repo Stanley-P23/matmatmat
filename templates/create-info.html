@@ -31,7 +31,7 @@ include "header.html" %}
         {{ ckeditor.load() }}
         {{ ckeditor.config(name='body') }}
 
-        {{ ckeditor.config(colorButton_colors = 'CF5D4E,454545,FFF,DDD,CCEAEE,66AB16')}}
+
         {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
       </div>
 

@@ -24,10 +24,10 @@ class CreateExerciseForm(FlaskForm):
 
 
     body = CKEditorField("Treść zadania", validators=[DataRequired()])
-    value1 = StringField("Odpowiedź A", validators=[DataRequired(), Length(1, 100)])
-    value2 = StringField("Odpowiedź B", validators=[DataRequired(), Length(1, 100)])
-    value3 = StringField("Odpowiedź C", validators=[DataRequired(), Length(1, 100)])
-    value4 = StringField("Odpowiedź D", validators=[DataRequired(), Length(1, 100)])
+    value1 = CKEditorField("Odpowiedź A", validators=[DataRequired()])
+    value2 = CKEditorField("Odpowiedź B", validators=[DataRequired()])
+    value3 = CKEditorField("Odpowiedź C", validators=[DataRequired()])
+    value4 = CKEditorField("Odpowiedź D", validators=[DataRequired()])
     correct = SelectField(u'Poprawna odpowiedź', choices=['A', 'B', 'C', 'D'])
     submit = SubmitField("Dodaj zadanie")
 
