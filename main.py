@@ -71,9 +71,11 @@ def news():
     start = (page - 1) * series_per_page
     end = start + series_per_page
     paginated_information = information[start:end]
+    if_next = end < len(information)
 
 
-    return render_template("index.html", all_posts=paginated_information, current_user=current_user, page=page)
+    return render_template("index.html", all_posts=paginated_information, current_user=current_user, page=page,
+                           if_next=if_next)
 
 @app.route('/docs/<string:no>')
 def get_pdf(no):
