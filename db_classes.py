@@ -67,10 +67,10 @@ class Exercise(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.Text, nullable=False)
-    value1 = db.Column(db.String(100), nullable=False)
-    value2 = db.Column(db.String(100), nullable=False)
-    value3 = db.Column(db.String(100), nullable=False)
-    value4 = db.Column(db.String(100), nullable=False)
+    value1 = db.Column(db.Text, nullable=False)
+    value2 = db.Column(db.Text, nullable=False)
+    value3 = db.Column(db.Text, nullable=False)
+    value4 = db.Column(db.Text, nullable=False)
     correct = db.Column(db.String(1), nullable=False)
 
     # Create Foreign Key, "users.id" the users refers to the tablename of User.
