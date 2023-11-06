@@ -65,7 +65,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField(label="ZALOGUJ MNIE!")
 
 class RegisterForm(FlaskForm):
-    email = StringField('E-mail', validators=[DataRequired(), Email()])
+    email = StringField('E-mail', validators=[DataRequired()])
     password = PasswordField('Hasło', validators=[DataRequired(), Length(8), ])
     confirm = PasswordField('Powtórz hasło', validators=[DataRequired(), Length(8), ])
     name = StringField('Imię', validators=[DataRequired()])
