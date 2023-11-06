@@ -1,0 +1,56 @@
+{% from "bootstrap5/form.html" import render_form %}
+{% include "header.html" %}
+
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('../static/assets/img/work-in-progress.jpg')">
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="post-heading">
+          <h1>Dodaj zadanie</h1>
+            <h3>do serii nr {{series_id}}</h3>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Post Content -->
+
+  <div class="container px-4 px-lg-5">
+    <div class="row justify-content-center">
+
+
+    <div class="  col-sm-7 col-lg-12 col-sm-7  ">
+
+
+
+
+<form  method="POST">
+        <!-- Exercises Area -->
+        <ul class="list-group list-group-flush">
+
+
+
+{% if current_user.id == 1  %}
+
+
+          {{ ckeditor.load() }} {{ ckeditor.config(name='body') }}
+          {{ render_form(add_form, novalidate=True, button_map={"submit": "primary"}) }}
+
+
+      {% endif %}
+
+
+
+        </ul>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+{% include "footer.html" %}

@@ -1,0 +1,122 @@
+{% from "bootstrap5/form.html" import render_form %}
+{% include "header.html" %}
+
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('/static/assets/img/challenge.jpg')">
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="post-heading">
+          <h1>{{ post.title }}</h1>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Post Content -->
+
+  <div class="container px-4 px-lg-5">
+    <div class="row justify-content-center">
+
+
+      <div class="  col-sm-7 col-lg-12 col-sm-7  ">
+
+        <div class=" h4 mb-5 text-primary">Termin wykonania zadań {{ post.finish_date }}</div>
+
+
+<form  method="POST">
+        <!-- Exercises Area -->
+        <ul class="list-group list-group-flush">
+
+
+          {% for exercise in post.exercises %}
+
+            <li class="list-group-item">
+
+                <div >
+
+                  <p class="h6">Zad. {{loop.index}}
+
+                    {% if current_user.id == 1: %}
+                    <a class="mx-5" href="{{url_for('delete_exercise',series_id=series_id, exercise_id=exercise.id) }}">✘</a>
+                    {% endif %}
+
+                  </p>
+
+                  {{ exercise.body|safe }}
+
+                </div>
+
+                <div class="container m-1">
+                <div class="row">
+                  <div class="col-sm">A. {{exercise.value1}}</div>
+                  <div class="col-sm">B. {{exercise.value2}}</div>
+                  <div class="col-sm">C. {{exercise.value3}}</div>
+                  <div class="col-sm">D. {{exercise.value4}}</div>
+                </div>
+                </div>
+
+                <div class=" my-3">
+
+                  {% set field = "answer{}".format(loop.index) %}
+                  {{form[field].label}}
+                  {{form[field]()}}
+
+                </div>
+            </li>
+
+          {% endfor %}
+        </ul>
+
+         <div class="row justify-content-center">
+        <div class="col-lg-7">
+                      <div class="row justify-content-center m-5">
+                {% if post.exercises|length >= 1 %}
+
+                <button type="submit" class="btn btn-primary">Wyślij odpowiedzi</button>
+                          <p class="small text-secondary"><br>Uwaga! Po przesłaniu odpowiedzi nie ma możliwości ich edytowania.</p>
+                {% endif %}
+
+
+                        </div>
+
+
+          </div>
+         </div>
+
+</form>
+
+
+
+          <div class="row  justify-content-center pb-5 ">
+
+           <div class="col-lg-3" align="center">
+
+
+                <a href="{{ url_for('get_all_series') }}"><button  class="btn btn-secondary">Powrót</button></a>
+
+
+
+
+            </div>
+
+        {% if current_user.id == 1  and post.exercises|length < 6 %}
+                      <div class="col-lg-3" align="center">
+
+                    <div >
+
+                      <a href="{{ url_for('add_exercise', series_id=series_id) }}"><button type="submit" class="btn btn-primary">Dodaj zadanie</button></a>
+
+                    </div>
+                          </div>
+        {% endif %}
+
+
+
+    </div>
+  </div>
+
+</div></div>
+{% include "footer.html" %}

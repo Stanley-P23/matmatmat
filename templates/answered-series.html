@@ -1,0 +1,94 @@
+{% from "bootstrap5/form.html" import render_form %}
+{% include "header.html" %}
+
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('/static/assets/img/challenge.jpg')">
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="post-heading">
+          <h1>{{ post.title }}</h1>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Post Content -->
+
+  <div class="container px-4 px-lg-5">
+    <div class="row justify-content-center">
+
+
+   <div class="  col-sm-7 col-lg-12 col-sm-7  ">
+
+        <div class=" h4 mb-5 text-muted">Wynik: {{score}}</div>
+
+
+
+        <!-- Exercises Area -->
+        <ul class="list-group list-group-flush">
+
+
+          {% for exercise in post.exercises %}
+
+            <li class="list-group-item m-3"
+                {% if user_answers|length !=0 %}
+                {% if user_answers[loop.index-1].answer != exercise.correct%} style="background-color:lightpink;"{% endif %}
+                {% if user_answers[loop.index-1].answer == exercise.correct%} style="background-color:palegreen;" {% endif %}
+                {% endif %}
+                >
+
+                  <p class="h6">Zad. {{loop.index}}</p>
+
+                  {{ exercise.body|safe }}
+
+
+
+                <div class="container m-1 ">
+                <div class="row">
+                  <div class="col-sm">A. {{exercise.value1}}</div>
+                  <div class="col-sm">B. {{exercise.value2}}</div>
+                  <div class="col-sm">C. {{exercise.value3}}</div>
+                  <div class="col-sm">D. {{exercise.value4}}</div>
+                </div>
+                </div>
+
+                <div class="my-3">
+
+                        {% if expired == "1" and user_answers|length == 0%}
+                    <h6>Minął czas na przesłanie odpowiedzi</h6>
+                        {% endif %}
+                    <h6>Poprawna odpowiedź: {{exercise.correct}}</h6>
+                    {% if user_answers|length !=0 %}
+                    <h6>Twoja odpowiedź: {{user_answers[loop.index-1].answer}}</h6>
+                    {% endif %}
+
+
+
+
+                </div>
+            </li>
+
+          {% endfor %}
+        </ul>
+
+
+
+              <div class="row justify-content-center m-5">
+
+        <a href="{{ url_for('get_all_series') }}"><button type="submit" class="btn btn-secondary">Powrót</button></a>
+
+              </div>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+{% include "footer.html" %}

@@ -1,0 +1,112 @@
+{% include "header.html" %}
+
+<!-- Page Header-->
+<header
+  class="masthead"
+  style="background-image: url('../static/assets/img/students.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="page-heading">
+          <h1>Uczniowie</h1>
+          <span class="subheading">How they doing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Main Content-->
+<main class="mb-4">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 px-5 justify-content-center" >
+      <div class="col-md-10 col-lg-8 col-xl-7 " >
+        <p >
+
+          {% for ser in series%}
+          {% if ser.exercises|length != 0 %}
+          Zajęcia nr {{ser.session_no}} - {{ser.title}}<br>
+          Liczba wykonanych: {{'%0.0f' % (ser.answers|length/ser.exercises|length)|float}}&nbsp&nbsp|&nbsp&nbsp
+          Średnio: {{series_score[loop.index-1]}}%<br><br>
+          {% endif %}
+          {% endfor %}
+        </p>
+
+      </div>
+      <div class="container">
+
+  <div class="row mb-5">
+                  <div class="col-3" style="text-align:center;">
+                    Imię
+                  </div>
+
+                  <div class="col-3" style="text-align:center;">
+                    E-mail
+                  </div>
+
+
+                  <div class="col-2" style="text-align:center;">
+                    Średni wynik
+                  </div>
+
+
+                  <div class="col-2" style="text-align:center;">
+
+
+                    Ilość odpowiedzi
+                  </div>
+
+                  <div class="col-1" style="text-align:center;">
+
+
+
+                  </div>
+
+    </div>
+        {% for pup in pupils%}
+  <div class="row">
+                  <div class="col-3" style="text-align:center;">
+                    {{loop.index}}.&nbsp&nbsp{{pup.name}}
+                  </div>
+
+                  <div class="col-3" style="text-align:center;">
+                    {{pup.email}}
+                  </div>
+
+
+                  <div class="col-2" style="text-align:center;">
+                    {{pupil_score[loop.index-1]}}%
+                  </div>
+
+
+                  <div class="col-2" style="text-align:center;">
+
+
+                    {{pupil_series[loop.index-1]}}%
+                  </div>
+
+
+                  <div class="col-1" style="text-align:center;">
+
+                  {% if loop.index != 1 %}
+
+                    <a href="{{url_for('delete_student', student_id=loop.index) }}"><i class="fa-solid fa-trash mx-2"></i></a>
+
+                  {% endif %}
+                  </div>
+
+    </div>
+
+
+
+
+              <br>
+          {% endfor %}
+       </div>
+
+
+    </div>
+  </div>
+</main>
+
+{% include "footer.html" %}

@@ -1,0 +1,77 @@
+{% include "header.html" %}
+
+<!-- Page Header-->
+<header
+  class="masthead"
+  style="background-image: url('../static/assets/img/materials.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="page-heading">
+          <h1>Materiały</h1>
+          <span class="subheading">...z zajęć</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Main Content-->
+<main class="mb-4">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <p>
+
+
+    <h2 class="py-3" >
+
+        Materiały z zajęć
+      </h2>
+
+          <ul class="list-unstyled">
+
+            <h5 class="py-3" >
+                II zajęcia - 28.10.23
+            </h5>
+           <li class="py-3" ><i class="fa-solid fa-scroll px-3"></i><a href="{{ url_for('get_pdf', no='D2') }}" class="link-primary">D2. Wyrażenia algebraiczne - szlifowanie podstaw</a></li>
+           <li class="py-3" ><i class="fa-solid fa-scroll px-3"></i><a href="{{ url_for('get_pdf', no='D1') }}" class="link-primary">D1. Działania na ułamkach - szlifowanie podstaw</a></li>
+           <li class="py-3" ><i class="fa-solid fa-scroll px-3"></i><a href="{{ url_for('get_pdf', no=4) }}" class="link-primary">4. Równania i nierówności</a></li>
+            <h5 class="py-3" >
+                I zajęcia - 14.10.23
+            </h5>
+           <li class="py-3" ><i class="fa-solid fa-scroll px-3"></i><a href="{{ url_for('get_pdf', no=3) }}" class="link-primary">3. Wzory skróconego mnożenia</a></li>
+           <li class="py-3" ><i class="fa-solid fa-scroll px-3"></i><a href="{{ url_for('get_pdf', no=2) }}" class="link-primary">2. Pierwiastki</a></li>
+           <li class="py-3" ><i class="fa-solid fa-scroll px-3"></i><a href="{{ url_for('get_pdf', no=1) }}" class="link-primary">1. Potęgi</a></li>
+
+
+
+       </ul>
+
+
+
+
+
+
+        </p>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</main>
+
+{% include "footer.html" %}
