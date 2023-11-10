@@ -1,0 +1,38 @@
+{% from "bootstrap5/form.html" import render_form %} {% block content %} {%
+include "header.html" %}
+
+<!-- Page Header -->
+<header
+  class="masthead"
+  style="background-image: url('../static/assets/img/edit-bg.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-5 col-lg-5 col-xl-5">
+        <div class="page-heading">
+
+          <h1>Edytuj termin</h1>
+
+
+
+          <span class="subheading"
+            >...wykonania serii zadań :)</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="mb-4">
+  <div class="container ">
+    <div class="row justify-content-center">
+      <div class="col-4 ">
+
+        {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+      </div>
+
+    </div>
+  </div>
+</main>
+{% include "footer.html" %} {% endblock %}

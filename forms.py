@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField, PasswordField
+from wtforms import StringField, SubmitField, SelectField, PasswordField, DateField
 from wtforms.validators import DataRequired, Length, Email
 from flask_ckeditor import CKEditorField
 
@@ -17,6 +17,10 @@ class CreateExercisesSeriesForm(FlaskForm):
     title = StringField("Tytuł", validators=[DataRequired(), Length(5, 50)])
     submit = SubmitField("Stwórz serię zadań")
 
+class CreateDateForm(FlaskForm):
+
+    date = DateField("Termin", format='%Y-%m-%d', validators=[DataRequired()])
+    submit = SubmitField("Zatwierdź termin")
 
 
 class CreateExerciseForm(FlaskForm):

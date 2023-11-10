@@ -401,7 +401,6 @@ def add_exercise(series_id):
 
 
 
-# TODO: Use a decorator so only an admin user can edit a post
 
 @app.route("/info-edit/<int:info_id>", methods=["GET", "POST"])
 @admin_only
@@ -415,11 +414,24 @@ def edit_info(info_id):
         info.title = edit_form.title.data
         info.body = edit_form.body.data
         db.session.commit()
-        return redirect(url_for("news"))
-    return render_template("create-info.html", form=edit_form, is_edit=True)
+        return redirect(url_for("get_all_series"))
+    return render_template("create-info.html", form=edit_form)
 
 
-# TODO: Use a decorator so only an admin user can delete a post
+@app.route("/series-date-edit/<int:series_id>", methods=["GET", "POST"])
+@admin_only
+def series_date_edit(series_id):
+    series = db.get_or_404(Series, series_id)
+    edit_form = CreateDateForm(
+        # date=series.finish_date,
+
+    )
+    if edit_form.validate_on_submit():
+        series.finish_date = edit_form.date.data
+        db.session.commit()
+        return redirect(url_for("get_all_series"))
+    return render_template("edit-date.html", form=edit_form, is_edit=True)
+
 
 @app.route("/delete/<int:series_id>/<int:exercise_id>")
 @admin_only
@@ -522,4 +534,4 @@ def contact():
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
