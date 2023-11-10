@@ -414,7 +414,7 @@ def edit_info(info_id):
         info.title = edit_form.title.data
         info.body = edit_form.body.data
         db.session.commit()
-        return redirect(url_for("get_all_series"))
+        return redirect(url_for("news"))
     return render_template("create-info.html", form=edit_form)
 
 
