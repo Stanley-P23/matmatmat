@@ -29,6 +29,8 @@ include "header.html" %}
     <div class="row justify-content-center">
       <div class="col-4 ">
 
+   {{ ckeditor.load() }}
+
         {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
       </div>
 
