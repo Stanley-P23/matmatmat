@@ -33,7 +33,7 @@ class CreateExerciseForm(FlaskForm):
     value3 = CKEditorField("Odpowiedź C", validators=[DataRequired()])
     value4 = CKEditorField("Odpowiedź D", validators=[DataRequired()])
     correct = SelectField(u'Poprawna odpowiedź', choices=['A', 'B', 'C', 'D'])
-    submit = SubmitField("Dodaj zadanie")
+    submit = SubmitField("Prześlij")
 
 
 
