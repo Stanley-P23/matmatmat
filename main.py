@@ -417,6 +417,39 @@ def edit_info(info_id):
         return redirect(url_for("news"))
     return render_template("create-info.html", form=edit_form)
 
+@app.route("/exercise-edit/<int:exercise_id>", methods=["GET", "POST"])
+@admin_only
+def edit_exercise(exercise_id):
+    exercise = db.get_or_404(Exercise, exercise_id)
+    edit_form = CreateExerciseForm(
+
+
+            body = exercise.body,
+            value1 = exercise.value1,
+            value2 = exercise.value2,
+            value3 = exercise.value3,
+            value4 = exercise.value4,
+            correct = exercise.correct
+        
+        
+                                    )
+    
+    
+    
+    if edit_form.validate_on_submit():
+
+        exercise.body = edit_form.body.data
+        exercise.value1 = edit_form.value1.data
+        exercise.value2 = edit_form.value2.data
+        exercise.value3 = edit_form.value3.data
+        exercise.value4 = edit_form.value4.data
+        exercise.correct = edit_form.correct.data
+        
+
+        db.session.commit()
+        return redirect(url_for("get_all_series"))
+    return render_template("edit-exercise.html", form=edit_form)
+
 
 @app.route("/series-date-edit/<int:series_id>", methods=["GET", "POST"])
 @admin_only
