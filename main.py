@@ -60,6 +60,7 @@ def admin_only(f):
 
 
 @app.route("/")
+
 def news():
 
     result = db.session.execute(db.select(Infos).order_by(Infos.date))
