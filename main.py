@@ -62,7 +62,7 @@ def admin_only(f):
 @app.route("/")
 def news():
 
-    result = db.session.execute(db.select(Infos))
+    result = db.session.execute(db.select(Infos).order_by(Infos.date))
     information = result.scalars().all()
     information.reverse()
 
