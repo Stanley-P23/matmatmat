@@ -4,7 +4,6 @@ from flask import Flask, abort, render_template, redirect, url_for, flash, reque
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
 from flask_gravatar import Gravatar
-
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -63,9 +62,9 @@ def admin_only(f):
 
 def news():
 
-    result = db.session.execute(db.select(Infos).order_by(Infos.date))
+    result = db.session.execute(db.select(Infos).order_by(Infos.date.desc()))
     information = result.scalars().all()
-    information.reverse()
+    #information.reverse()
 
     page = request.args.get('page', default=1, type=int)
     series_per_page = 2
@@ -362,12 +361,13 @@ def add_new_post():
 def add_new_info():
     form = CreateInfoForm()
     if form.validate_on_submit():
+
         new_info = Infos(
 
 
                     title=form.title.data,
                     body=form.body.data,
-                    date=date.today(),
+                    date=datetime.now().strftime('%Y-%m-%d %H:%M'),
 
         )
         db.session.add(new_info)
