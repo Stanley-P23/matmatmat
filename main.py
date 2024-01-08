@@ -11,7 +11,7 @@ import math
 from notifications import*
 from forms import*
 from db_classes import*
-
+import thoughts
 
 ckeditor = CKEditor(app)
 Bootstrap5(app)
@@ -564,7 +564,12 @@ def contact():
     return render_template("contact.html", logged_in=current_user.is_authenticated)
 
 
+@app.route("/brain")
+def brain():
 
+    current_day = datetime.today().date().day - 1
+
+    return render_template('thoughts.html', text = thoughts.brain[current_day] )
 
 
 if __name__ == "__main__":
