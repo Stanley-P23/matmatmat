@@ -572,5 +572,12 @@ def brain():
     return render_template('thoughts.html', text = thoughts.brain[current_day] )
 
 
+@app.route("/marshall")
+def marshall():
+
+    current_day = datetime.today().date().day - 1
+
+    return render_template('marshall2.html', text = thoughts.brain[current_day] )
+
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
