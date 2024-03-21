@@ -15,7 +15,7 @@ class NotificationManager:
             self.message_text = f"Udostępniłem kolejną serię zadań - {series.title}.\n" \
                                 f"Seria jest dostępna pod " \
                                 f"linkiem: " \
-                                f"https://matmatmat.pl/series/{series.id}.\nTermin wykonania zadań mija:" \
+                                f"https://matmatmat.pl/tests.\nTermin wykonania zadań mija:" \
                                 f" {series.finish_date}."
 
 
