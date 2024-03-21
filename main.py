@@ -579,5 +579,8 @@ def marshall():
 
     return render_template('marshall2.html', text = thoughts.brain[current_day] )
 
+# if __name__ == "__main__":
+#     app.run(debug=True)
+
 if __name__ == "__main__":
     app.run(debug=False)

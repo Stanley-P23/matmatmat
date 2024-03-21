@@ -31,7 +31,7 @@
   filter: invert(30%) sepia(100%) saturate(100%) hue-rotate(150deg) brightness(100%) contrast(100%);
 }
 .gradient-background {
-  background-image: radial-gradient(circle,  #F6D6D6 45% , #7BD3EA 95%);
+  background-image: radial-gradient(circle, #7BD3EA ,  #F6D6D6 40% , #7BD3EA 95%);
   min-height: 100vh; /* Ensure at least full viewport height */
   background-attachment: fixed; /* Keep the gradient fixed during scrolling */
   background-repeat: no-repeat; /* Prevent the background from repeating */
@@ -59,12 +59,14 @@
   margin: 150px 50px;
 }
 .carousel-inner img {
-   display:block;
+
    height: auto;
    max-width: 100%;
    justify-content: center;
 }
-
+.carousel-background {
+<!--    background-color: rgba(255, 255, 255, 0.90); /* Black background with 50% opacity */-->
+}
 
   </style>
 </head>
@@ -76,13 +78,13 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-2">
+    <div class=" col-sm-1  ">
 
     </div>
-    <div class="col-8">
+    <div class="col-sm-10 ">
 
 
-       <div id="myCarousel" class="carousel slide  " >
+       <div id="myCarousel" class="  carousel slide  " >
     <!-- Custom Indicators with Dots -->
     <ol class="carousel-indicators custom-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -93,7 +95,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner  ">
       <div class="carousel-item active   ">
-                            <div class="card"   >
+                            <div class="card carousel-background"   >
                           <div class="card-body ">
                             <h5 class="card-title">Empatia pozwala rozładować napięte sytuacje i zapobiegać przemocy.</h5>
                             <p class="card-text justified-text">Praktykowanie empatii w codziennych interakcjach, cy, nawet w trudnych sytuacjach, może budować wzajemne zrozumienie i pokój. Przykładem może być nauczycielka, która poprzez empatyczną komunikację uniknęła przemocy w szkole.</p>
@@ -135,7 +137,7 @@
 
 
     </div>
-    <div class="col-2">
+    <div class="col-sm-1 ">
 
     </div>
   </div>
